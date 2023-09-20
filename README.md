@@ -7,6 +7,12 @@
 python main.py
 ```
 
+## Python packages
+```bash
+pip install -r requirements.txt
+```
+
+
 ## Members
 - [Martin Morisbak](mailto:martmori@ntnu.no) (Project Leader)
 - [Eskil Alstad](mailto:eskil.alstad@ntnu.no)
