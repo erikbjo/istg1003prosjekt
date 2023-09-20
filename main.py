@@ -14,4 +14,5 @@ mymodel = list(map(myfunc, df['skostr']))
 
 plt.scatter(df['skostr'], df['hoyde'])
 plt.plot(df['skostr'], mymodel)
+plt.savefig('skostr_hoyde.pdf')
 plt.show()
