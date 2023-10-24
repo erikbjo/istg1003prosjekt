@@ -1,4 +1,4 @@
-# ISTG1003 Forprosjekt Gruppe 5
+# ISTG1003 Prosjekt Gruppe 5
 
 ---
 
