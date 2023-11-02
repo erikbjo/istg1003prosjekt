@@ -2,16 +2,7 @@
 
 ---
 
-## How to run the project
-```bash
-python main.py
-```
-
-## Python packages
-```bash
-pip install -r requirements.txt
-```
-
+Repo for project in ISTG1003 - Statistikk at NTNU.
 
 ## Members
 - [Martin Morisbak](mailto:martmori@ntnu.no) (Project Leader)
