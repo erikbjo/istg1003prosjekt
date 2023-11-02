@@ -12,6 +12,10 @@ skostr_hoyde.pdf
 .idea/**/shelf
 .idea/**
 
+**/**/.idea/**
+Oppgaver/.idea/**
+Oppgaver/.idea
+
 # AWS User-specific
 .idea/**/aws.xml
 
