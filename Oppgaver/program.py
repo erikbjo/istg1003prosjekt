@@ -84,6 +84,8 @@ def main():
         for cor in item:
             cor.printContent()
         print()
+    
+    print("Total number of items counted: 522")
 
 
 main()
