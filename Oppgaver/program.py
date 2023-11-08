@@ -32,9 +32,7 @@ def getThemes(dataframe):
 def getFromSelector(selector):
     path = "./Oppgaver/data/lego.population.csv"
     df = getDataFrame(path)
-    
     work_df = getSelectionDataFrame(df, selector)
-    
     
     correlation_pieces = computations.getCorrelationRelatedToElement(work_df, "Pieces")
     correlation_pages = computations.getCorrelationRelatedToElement(work_df, "Pages")
@@ -46,7 +44,6 @@ def getFromSelector(selector):
     minifigures = correlations.Correlations(selector, "Minifigures", "Price", correlation_minifigures)
     #unique_pieces = correlations.Correlations(selector, "Unique_Pieces", "Price", correlation_unique_pieces)
     
-    
     correlations_array = []
     correlations.appendToArray(correlations_array, pieces)
     correlations.appendToArray(correlations_array, pages)
@@ -57,19 +54,36 @@ def getFromSelector(selector):
 
 def main():
     
-    path = "./Oppgaver/data/lego.population.csv"
-    df = getDataFrame(path)
-    themes = getThemes(df)
+    # Bare disse temaene har et antall varer som gir et bilde på korrelasjon.
+    # De som ikke har et tilfreds antall varer er derfor fjernet.
     
-    correlations_array = []
-    for theme in themes:
-        correlations_array.append(getFromSelector(theme))
+    lego_array = ["Friends", "City", "Speed Champions", "Hidden Side", "Classic",
+                  "Juniors", "Creator 3-in-1", "Ideas", "Creator Expert"]
     
-    for i in range(len(correlations_array)):
-        for item in correlations_array[i]:
-            item.printContent()
+    trademark_array = ["Disney", "Unikitty", "Star Wars", "Minecraft", "Marvel",
+                       "Harry Potter", "Trolls World Tour", "DC", "Monkie Kid"]
+    
+    
+    
+    lego_correlations = []
+    for theme in lego_array:
+        lego_correlations.append(getFromSelector(theme))
+    
+    trademark_correlations = []
+    for theme in trademark_array:
+        trademark_correlations.append(getFromSelector(theme))
+    
+    for item in lego_correlations:
+        for cor in item:
+            cor.printContent()
         print()
     
+    print("\n\n\n")
+    
+    for item in trademark_correlations:
+        for cor in item:
+            cor.printContent()
+        print()
 
 
 main()

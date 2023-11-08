@@ -3,10 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def average(x, n):
-    sum = 0
-    for i in range(n):
-        sum += x[i]
-    return (sum / n)
+    if (n == 0):
+        return 0
+    else:
+        sum = 0
+        for i in range(n):
+            sum += x[i]
+        return (sum / n)
 
 def covariance(x, x_average: float, y, y_average: float, n):
     sum = 0
@@ -46,6 +49,10 @@ def point_variance(x, x_average, n):
 
 def getCorrelationRelatedToElement(dataframe, element):
     n = len(dataframe)
+    
+    if (n == 0):
+        return 0
+    
     price = np.asarray(dataframe["Price"])
     category = np.asarray(dataframe[element])
     
