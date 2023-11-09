@@ -19,16 +19,6 @@ def getDataFrame(path):
 def getSelectionDataFrame(dataframe, selector):
     return dataframe[dataframe["Theme"] == selector]
 
-def printContentInDataFrame(dataframe):
-    print(dataframe)
-
-def getThemes(dataframe):
-    themes = []
-    for theme in dataframe["Theme"]:
-        if theme not in themes:
-            themes.append(theme)
-    return themes
-
 def getFromSelector(selector):
     path = "./Oppgaver/data/lego.population.csv"
     df = getDataFrame(path)
