@@ -4,16 +4,6 @@ from Oppgaver.oppgave1 import computations, correlations, getdata, plotting
 def getSelectionDataFrame(dataframe, selector):
     return dataframe[dataframe["Theme"] == selector]
 
-def printContentInDataFrame(dataframe):
-    print(dataframe)
-
-def getThemes(dataframe):
-    themes = []
-    for theme in dataframe["Theme"]:
-        if theme not in themes:
-            themes.append(theme)
-    return themes
-
 def getFromSelector(selector):
     df = getdata.getDataFrame()
     work_df = getSelectionDataFrame(df, selector)
