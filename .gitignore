@@ -3,6 +3,8 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 skostr_hoyde.pdf
+Oppgaver/oppgave1/plots/*
+!Oppgaver/oppgave1/plots/.gitkeep
 
 # User-specific stuff
 .idea/**/workspace.xml
