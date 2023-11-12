@@ -1,6 +1,9 @@
 import computations
 import correlations
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
 
 def getDataFrame(path):
     df = pd.read_csv(path, sep = ",", encoding = "latin1")
@@ -42,6 +45,25 @@ def getFromSelector(selector):
     
     return correlations_array
 
+
+def getDataFrameThemes(original_df: pd.DataFrame, themes):
+    
+    result_df = pd.DataFrame
+    for i in range(len(themes)):
+        result_df.add(original_df.loc[original_df["Theme"] == themes[i]])
+    
+    return result_df
+    
+
+def getSnsData(df):
+    sns.pairplot(df, vars = ['Price', 'Pieces', 'Pages', 'Minifigures'],
+             hue = 'Theme', 
+             diag_kind = 'kde',
+             plot_kws = dict(alpha = 0.4))
+    plt.show()
+
+
+
 def main():
     
     # Bare disse temaene har et antall varer som gir et bilde på korrelasjon.
@@ -76,6 +98,10 @@ def main():
         print()
     
     print("Total number of items counted: 522")
+    
+    lego_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), lego_array)
+    
+    print(lego_df)
 
 
 main()
