@@ -61,7 +61,9 @@ def main():
     
     print("Total number of items counted: 522")
 
-    plotting.mutlplecrossplot(getdata.getDataFrame())
+    plotting.multipleCrossPlot(getdata.getDataFrame())
+    plotting.barDiagram(getdata.getDataFrame())
+    plotting.threeDimentntialPlot(getdata.getDataFrame())
 
 
 main()
