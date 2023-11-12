@@ -47,11 +47,7 @@ def getFromSelector(selector):
 
 
 def getDataFrameThemes(original_df: pd.DataFrame, themes):
-    
-    result_df = pd.DataFrame
-    for i in range(len(themes)):
-        result_df.add(original_df.loc[original_df["Theme"] == themes[i]])
-    
+    result_df = original_df[original_df["Theme"].isin(themes)]
     return result_df
     
 
@@ -100,8 +96,10 @@ def main():
     print("Total number of items counted: 522")
     
     lego_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), lego_array)
+    brands_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), trademark_array)
     
     print(lego_df)
+    print(brands_df)
 
 
 main()
