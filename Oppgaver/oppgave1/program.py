@@ -26,6 +26,24 @@ def getFromSelector(selector):
     
     return correlations_array
 
+<<<<<<< HEAD:Oppgaver/oppgave1/program.py
+=======
+
+def getDataFrameThemes(original_df: pd.DataFrame, themes):
+    result_df = original_df[original_df["Theme"].isin(themes)]
+    return result_df
+    
+
+def getSnsData(df):
+    sns.pairplot(df, vars = ['Price', 'Pieces', 'Pages', 'Minifigures'],
+             hue = 'Theme', 
+             diag_kind = 'kde',
+             plot_kws = dict(alpha = 0.4))
+    plt.show()
+
+
+
+>>>>>>> ca33ad1 (Fixed function for dataframe to append brands):Oppgaver/program.py
 def main():
     
     # Bare disse temaene har et antall varer som gir et bilde på korrelasjon.
@@ -60,10 +78,19 @@ def main():
         print()
     
     print("Total number of items counted: 522")
+<<<<<<< HEAD:Oppgaver/oppgave1/program.py
 
     plotting.multipleCrossPlot(getdata.getDataFrame())
     plotting.barDiagram(getdata.getDataFrame())
     plotting.threeDimentntialPlot(getdata.getDataFrame())
+=======
+    
+    lego_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), lego_array)
+    brands_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), trademark_array)
+    
+    print(lego_df)
+    print(brands_df)
+>>>>>>> ca33ad1 (Fixed function for dataframe to append brands):Oppgaver/program.py
 
 
 main()
