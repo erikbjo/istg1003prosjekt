@@ -1,5 +1,22 @@
 from Oppgaver.oppgave1 import computations, correlations, getdata, plotting
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
 
+def getDataFrame(path):
+    df = pd.read_csv(path, sep = ",", encoding = "latin1")
+
+    df_actual = df[["Set_Name", "Theme", "Price", "Pieces", "Pages", "Minifigures", "Unique_Pieces"]]
+    df_actual = df_actual.dropna()
+
+    df_actual["Theme"] = df_actual["Theme"].astype(str)
+    df_actual["Theme"] = df_actual["Theme"].str.replace(r'[^a-zA-Z0-9\s-]', '', regex = True)
+
+    df_actual["Price"] = df_actual["Price"].str.replace('\$', '', regex = True)
+    df_actual["Price"] = df_actual["Price"].astype(float)
+    
+    return df_actual
 
 def getSelectionDataFrame(dataframe, selector):
     return dataframe[dataframe["Theme"] == selector]
@@ -25,6 +42,18 @@ def getFromSelector(selector):
     #correlations.appendToArray(correlations_array, unique_pieces)
     
     return correlations_array
+
+def getDataFrameThemes(original_df: pd.DataFrame, themes):
+    result_df = original_df[original_df["Theme"].isin(themes)]
+    return result_df
+    
+
+def getSnsData(df):
+    sns.pairplot(df, vars = ['Price', 'Pieces', 'Pages', 'Minifigures'],
+             hue = 'Theme', 
+             diag_kind = 'kde',
+             plot_kws = dict(alpha = 0.4))
+    plt.show()
 
 
 
@@ -62,5 +91,11 @@ def main():
         print()
     
     print("Total number of items counted: 522")
+    
+    lego_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), lego_array)
+    brands_df = getDataFrameThemes(getDataFrame("./Oppgaver/data/lego.population.csv"), trademark_array)
+    
+    print(lego_df)
+    print(brands_df)
 
 main()
