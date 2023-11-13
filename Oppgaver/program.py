@@ -8,7 +8,7 @@ import numpy as np
 def getDataFrame(path):
     df = pd.read_csv(path, sep = ",", encoding = "latin1")
 
-    df_actual = df[["Theme", "Price", "Pieces", "Pages", "Minifigures"]]
+    df_actual = df[["Set_Name", "Theme", "Price", "Pieces", "Pages", "Minifigures", "Unique_Pieces"]]
     df_actual = df_actual.dropna()
 
     df_actual["Theme"] = df_actual["Theme"].astype(str)
